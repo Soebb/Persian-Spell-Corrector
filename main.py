@@ -8,25 +8,6 @@ from selenium.webdriver.support import expected_conditions as EC
 # system path to chromedriver.exe
 CHROMEDRIVER_PATH = r"C:\chromedriver.exe"
 
-
-def fix_encoding(text):
-    try:
-        text.decode('utf8', 'strict')
-        fixed = text.decode('utf8')
-        return fixed
-    except UnicodeError:
-        pass
-
-    try:
-        text.decode('utf16', 'strict')
-        fixed = text.decode('utf16')
-        return fixed
-    except UnicodeError:
-        pass
-
-    return text.decode('windows-1256')
-
-
 text = input("Paste text: ")
 
 options = webdriver.ChromeOptions()
@@ -47,7 +28,6 @@ submit_button = browser.find_element(By.XPATH, '/html/body/div/main/div/div[3]/d
 submit_button.click()
 
 correct_field = WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/main/div/div[3]/div[2]/form/div/div/div[3]/div/div[1]')))
-
-corrected_text = fix_encoding(correct_field.text)
+corrected_text = correct_field.text
 
 print(corrected_text)
