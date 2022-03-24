@@ -30,4 +30,6 @@ submit_button.click()
 correct_field = WebDriverWait(browser, 20).until(EC.visibility_of_element_located((By.XPATH, '/html/body/div/main/div/div[3]/div[2]/form/div/div/div[3]/div/div[1]')))
 corrected_text = correct_field.text
 
+browser.close()
+
 print(corrected_text)
