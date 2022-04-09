@@ -20,7 +20,7 @@ browser.get(link_to_online_corrector)
 
 text_field = browser.find_element(By.XPATH, '/html/body/div/main/div/div[3]/div[2]/form/div/div/div[1]/div')
 
-# replace the default(testing) text in the field with our text
+# replace the default/pre-filled text in the field with our text
 text_field.send_keys(Keys.CONTROL+'a')
 text_field.send_keys(text)
 
